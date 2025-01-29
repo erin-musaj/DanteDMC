@@ -7,12 +7,12 @@ public class MulticastSender {
     public static void main(String[] args) {
         String multicastAddress = "230.0.0.1";
         int port = 4446;
-        String fileName = "text";
+        File fileName = new File("text");
 
         try (MulticastSocket socket = new MulticastSocket()) {
             InetAddress group = InetAddress.getByName(multicastAddress);
             String message="";
-            BufferedReader reader = new BufferedReader(new FileReader("W:\\5INA\\TPSIT\\DanteDMC\\non lo so\\src\\" + fileName));
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
 
             while ((message = reader.readLine()) != null) {
                 byte[] buffer = message.getBytes();
